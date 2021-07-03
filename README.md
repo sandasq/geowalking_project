@@ -32,3 +32,5 @@ app/helpers/walks_helper.rb
 View:
 
 app/views/walks/index.html.erb
+
+NOTE: the Geocoder gem might be a good solution for this type of data but was not used in this project: https://www.rubydoc.info/gems/rails-geocoder/0.9.11/Geocoder
