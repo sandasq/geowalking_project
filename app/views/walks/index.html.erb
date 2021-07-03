@@ -1,0 +1,12 @@
+<h1>Walks</h1>
+<div>
+  <% @walks.each_with_index do |walk, index| %>
+  <% if walk.distance.present? %>
+    <div><%= "Walk ##{index} - "%>
+      <div style="display:inline-block"><span>Distance:</span><%= distance_formatted(walk.distance) %></div>
+      <div style="display:inline-block"><span>Duration:</span><%= duration_formatted(walk.duration) %></div>
+      <div style="display:inline-block"><span>  Avg Speed:</span><%= speed_formatted(walk.average_speed) %></div>
+    </div>
+    <% end %>
+  <% end %>
+</div>

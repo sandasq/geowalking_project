@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  distance: 1.5
+  duration: 1.5
+  average_speed: 1.5
+
+two:
+  distance: 1.5
+  duration: 1.5
+  average_speed: 1.5
