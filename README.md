@@ -1,27 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Installation and Running:
 
-Things you may want to cover:
+budle install
+rails db:migrate
+rails db:seed
+rails server
 
-* Ruby version
+http://localhost:3000/walks
 
-* System dependencies
+Relevant Files - all others are skelton Rails:
 
-* Configuration
+CSV file:
+The csvfile is being read from db/seeds.rb
 
-* Database creation
+The trigger url goes throgh the app/controllers/walks_controller.rb which calls the service app/services/geo_walk_creator.rb.  The service has the bulk of the work of finding the individuals walks and calculating the distance, duration and average speed.
 
-* Database initialization
+DB model files
+app/models/geo_datum.db
+app/models/walk.db
 
-* How to run the test suite
+Helper used for display:
+app/helpers/walks_helper.rb
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# geo_walking_project
-"# geowalking_project" 
-"# geowalking_project" 
+View:
+app/views/walks/index.html.erb
