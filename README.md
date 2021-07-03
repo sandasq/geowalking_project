@@ -3,8 +3,11 @@
 Installation and Running:
 
 budle install
+
 rails db:migrate
+
 rails db:seed
+
 rails server
 
 http://localhost:3000/walks
