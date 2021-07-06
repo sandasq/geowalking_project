@@ -6,6 +6,7 @@ class GeoWalkCreator
       current_geo = GeoDatum.get_first_new_geo_data
       return unless current_geo.present?
 
+      @first_timestamp = current_geo.timestamp
       # create new walk record and establish a unique id
       @distance = 0
       @geowalk = Walk.new
@@ -21,6 +22,7 @@ class GeoWalkCreator
       next_geo = GeoDatum.get_next_new_geo_data(current_geo)
       # there are no more new records so update and return
       if next_geo.blank?
+        @last_timestamp = current_geo.timestamp
         update_geo_walk
         return
       end
@@ -34,6 +36,7 @@ class GeoWalkCreator
           current_geo = next_geo
           check_for_same_walk(current_geo)
       else
+        @last_timestamp = current_geo.timestamp
         # forcing a new walk because of elapsed time
         prepare_for_next_walk
       end
@@ -45,10 +48,7 @@ class GeoWalkCreator
     end
 
     def update_geo_walk
-      first_walk = GeoDatum.get_first_geo_data(@geowalk.id)
-      last_walk = GeoDatum.get_last_geo_data(@geowalk.id)
-
-      duration = (last_walk.timestamp - first_walk.timestamp) / 60
+      duration = (@last_timetsamp - @first_timestamp) / 60
       speed = @distance / duration
 
       @geowalk.distance = @distance
