@@ -24,12 +24,4 @@ class GeoDatum < ApplicationRecord
   def self.get_next_new_geo_data(current)
     GeoDatum.where("walk_id is null and id > ? ", current.id).order('timestamp asc').first
   end
-
-  def self.get_first_geo_data(id)
-    GeoDatum.where("walk_id = ?", id).order('timestamp asc').first
-  end
-
-  def self.get_last_geo_data(id)
-    GeoDatum.where("walk_id = ?", id).order('timestamp asc').last
-  end
 end
